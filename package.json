@@ -1,0 +1,16 @@
+{
+  "name": "blog-remark",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@mdx-js/mdx": "^2.0.0-rc.2",
+    "mdast-util-from-markdown": "^1.2.0",
+    "mdast-util-mdx": "^1.1.0",
+    "mdast-util-to-markdown": "^1.2.6",
+    "micromark-extension-mdxjs": "^1.0.0",
+    "prettier": "^2.5.1",
+    "remark-math": "^5.1.1",
+    "unist-util-visit": "^4.1.0"
+  }
+}
