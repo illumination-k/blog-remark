@@ -4,6 +4,7 @@
   "main": "./build/index.js",
   "types": "./build/index.d.js",
   "license": "MIT",
+  "author": "illumination-k",
   "type": "module",
   "dependencies": {
     "image-size": "^1.0.1",
