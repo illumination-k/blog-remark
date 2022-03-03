@@ -1,7 +1,8 @@
 {
   "name": "blog-remark",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "./build/index.js",
+  "types": "./build/index.d.js",
   "license": "MIT",
   "type": "module",
   "dependencies": {
@@ -31,6 +32,7 @@
     "unist-util-inspect": "^7.0.0"
   },
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest",
+    "prepare": "tsc --outDir build"
   }
 }

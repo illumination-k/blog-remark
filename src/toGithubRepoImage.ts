@@ -3,6 +3,7 @@ import { ImageNode } from "./interfaces";
 import sizeOf from "image-size";
 import sr from "sync-request";
 import createAmpImageNode from "./createAmpImageNode";
+import { MdxJsxAttribute } from "mdast-util-mdx-jsx";
 
 function createGithubRepoImageNode(
   repo_url: string,
@@ -12,9 +13,14 @@ function createGithubRepoImageNode(
   height: number
 ) {
   const ampImage = createAmpImageNode(gh_card_url, alt, width, height, "fixed");
-
+  const attributes: MdxJsxAttribute[] = [
+    { type: "mdxJsxAttribute", name: "href", value: repo_url },
+  ];
   return {
-    type: "link",
+    type: "mdxJsxTextElement",
+    name: "a",
+    attributes,
+    children: ampImage,
   };
 }
 
@@ -23,7 +29,6 @@ export default function toGithubRepoImage() {
     visit(ast, "image", (node: ImageNode, index: number, parent: Parent) => {
       const url = node.url;
       const alt = node.alt;
-      const position = node.position;
 
       if (!url.startsWith("github:")) {
         return;

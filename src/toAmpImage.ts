@@ -3,8 +3,16 @@ import { ImageNode } from "./interfaces";
 import sizeOf from "image-size";
 import sr from "sync-request";
 import createAmpImageNode from "./createAmpImageNode";
+import { Plugin } from "unified";
 
-export default function toAmpImage() {
+type Option = {
+  defaultWidth: number;
+  defaultHeight: number;
+};
+
+export default function toAmpImage(
+  option: Option = { defaultHeight: 100, defaultWidth: 100 }
+): Plugin {
   return (ast: Parent) => {
     visit(ast, "image", (node: ImageNode, index: number, parent: Parent) => {
       const url = node.url;
@@ -16,8 +24,8 @@ export default function toAmpImage() {
       const newNode = createAmpImageNode(
         url,
         alt,
-        dimensions.width || 100,
-        dimensions.height || 100
+        dimensions.width || option.defaultWidth,
+        dimensions.height || option.defaultHeight
       );
 
       parent.children[index] = newNode;

@@ -41,7 +41,7 @@ export default function toAmpMathml() {
       parent.children[index] = newNode;
     });
 
-    visit(ast, "math", (node: Node, index: number, parent: Parent) => {
+    visit(ast, "inline-math", (node: Node, index: number, parent: Parent) => {
       const newNode = createNewNode("mdxJsxTextElement", toString(node));
       parent.children[index] = newNode;
     });
