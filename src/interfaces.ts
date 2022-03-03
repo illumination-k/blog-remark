@@ -4,3 +4,8 @@ export interface CodeNode extends Node {
   lang: string;
   value: string;
 }
+
+export interface ImageNode extends Node {
+  url: string;
+  alt: string;
+}
