@@ -6,6 +6,9 @@
   "license": "MIT",
   "author": "illumination-k",
   "type": "module",
+  "files": [
+    "build"
+  ],
   "dependencies": {
     "image-size": "^1.0.1",
     "mdast-util-to-string": "^3.1.0",

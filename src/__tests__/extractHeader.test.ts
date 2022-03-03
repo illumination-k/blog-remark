@@ -5,8 +5,6 @@ import mdx from "remark-mdx";
 import { unified } from "unified";
 import stringify from "remark-stringify";
 
-const exports = {};
-
 describe("Test of toAmpMathml", () => {
   it("basic", () => {
     const doc = "# Title\n## A\n ### B\n";
