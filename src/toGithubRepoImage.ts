@@ -1,8 +1,8 @@
 import { Parent, visit } from "unist-util-visit";
-import { ImageNode } from "./interfaces";
+import { ImageNode } from "./interfaces.js";
 import sizeOf from "image-size";
 import sr from "sync-request";
-import createAmpImageNode from "./createAmpImageNode";
+import createAmpImageNode from "./createAmpImageNode.js";
 import { MdxJsxAttribute } from "mdast-util-mdx-jsx";
 
 function createGithubRepoImageNode(

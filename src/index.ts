@@ -1,7 +1,15 @@
-import toMathml from "./toAmpMathml";
-import extractHeader from "./extractHeader";
-import highlighter from "./highlighter";
-import toGithubRepoImage from "./toGithubRepoImage";
-import toAmpImage from "./toAmpImage";
+import toMathml from "./toAmpMathml.js";
+import extractHeader from "./extractHeader.js";
+import highlighter from "./highlighter.js";
+import toGithubRepoImage from "./toGithubRepoImage.js";
+import toAmpImage from "./toAmpImage.js";
+import codeTitle from "./codeTitle.js";
 
-export { toAmpImage, toMathml, highlighter, extractHeader, toGithubRepoImage };
+export {
+  codeTitle,
+  toAmpImage,
+  toMathml,
+  highlighter,
+  extractHeader,
+  toGithubRepoImage,
+};

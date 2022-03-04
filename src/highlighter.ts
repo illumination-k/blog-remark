@@ -80,16 +80,16 @@ refractor.register(yaml);
 import nim from "refractor/lang/nim.js";
 refractor.register(nim);
 
-import powershell from "refractor/lang/powershell";
+import powershell from "refractor/lang/powershell.js";
 refractor.register(powershell);
 
-import json from "refractor/lang/json";
+import json from "refractor/lang/json.js";
 refractor.register(json);
 
-import graphql from "refractor/lang/graphql";
+import graphql from "refractor/lang/graphql.js";
 refractor.register(graphql);
 
-import toml from "refractor/lang/toml";
+import toml from "refractor/lang/toml.js";
 refractor.register(toml);
 
 export default function highlighter() {

@@ -3,3 +3,4 @@ src/
 dprint.json
 jest.config.mjs
 tsconfig.json
+*.tgz
