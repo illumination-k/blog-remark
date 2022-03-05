@@ -1,5 +1,5 @@
 import toAmpMathml from "../toAmpMathml";
-import print from "../utils/print";
+import print from "../test_utils/print";
 import parser from "remark-parse";
 import mdx from "remark-mdx";
 import { unified } from "unified";
