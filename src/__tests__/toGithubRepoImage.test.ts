@@ -8,12 +8,7 @@ import toGithubRepoImage from "../toGithubRepoImage";
 describe("Test of toAmpMathml", () => {
   it("basic", () => {
     const text = "![alt](github:illumination-k/blog)";
-    const processor = unified()
-      .use(parser)
-      .use(mdx)
-      .use(toGithubRepoImage)
-      .use(print)
-      .use(stringify);
+    const processor = unified().use(parser).use(mdx).use(toGithubRepoImage);
 
     processor.processSync(text).toString();
     const html = `<a href="abc">text</a>`;

@@ -1,6 +1,6 @@
 {
   "name": "blog-remark",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "./build/index.js",
   "types": "./build/index.d.js",
   "license": "MIT",
@@ -8,7 +8,8 @@
   "type": "module",
   "files": [
     "build",
-    "!**/__tests__"
+    "!**/__tests__",
+    "!**/test_utils"
   ],
   "dependencies": {
     "image-size": "^1.0.1",
@@ -21,7 +22,6 @@
   "devDependencies": {
     "@types/jest": "^27.4.1",
     "@types/node": "^17.0.14",
-    "@vercel/ncc": "^0.33.3",
     "hast-util-to-html": "^8.0.3",
     "jest": "^27.4.7",
     "mdast": "^3.0.0",

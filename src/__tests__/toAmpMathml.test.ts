@@ -13,10 +13,7 @@ describe("Test of toAmpMathml", () => {
       .use(parser)
       .use(mdx)
       .use(remarkMath)
-      .use(toAmpMathml)
-      .use(print)
-      .use(stringify);
-
+      .use(toAmpMathml);
     console.log(processor.processSync(math).toString());
   });
 });

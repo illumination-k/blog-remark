@@ -2,6 +2,7 @@ import { Node } from "unist";
 import { Parent, visit } from "unist-util-visit";
 import { toString } from "mdast-util-to-string";
 import { MdxJsxAttribute } from "mdast-util-mdx-jsx";
+import { Plugin } from "unified";
 
 function createNewNode(
   type: "mdxJsxTextElement" | "mdxJsxFlowElement",
@@ -34,7 +35,7 @@ function createNewNode(
   };
 }
 
-export default function toAmpMathml() {
+export default function toAmpMathml(): Plugin {
   return (ast: Node) => {
     visit(ast, "math", (node: Node, index: number, parent: Parent) => {
       const newNode = createNewNode("mdxJsxFlowElement", toString(node));

@@ -4,6 +4,7 @@ import sizeOf from "image-size";
 import sr from "sync-request";
 import createAmpImageNode from "./createAmpImageNode.js";
 import { MdxJsxAttribute } from "mdast-util-mdx-jsx";
+import { Plugin } from "unified";
 
 function createGithubRepoImageNode(
   repo_url: string,
@@ -24,7 +25,7 @@ function createGithubRepoImageNode(
   };
 }
 
-export default function toGithubRepoImage() {
+export default function toGithubRepoImage(): Plugin {
   return (ast: Parent) => {
     visit(ast, "image", (node: Image, index: number, parent: Parent) => {
       const url = node.url;

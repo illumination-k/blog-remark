@@ -1,7 +1,7 @@
 import { Heading as AstHeading } from "mdast";
 import { Node } from "unist";
 import { toString } from "mdast-util-to-string";
-import { VFileWithOutput } from "unified";
+import { Plugin, VFileWithOutput } from "unified";
 import { visit } from "unist-util-visit";
 
 type Heading = {
@@ -22,7 +22,7 @@ export function headings(ast: Node) {
   return headingsList;
 }
 
-export default function extractHeadings() {
+export default function extractHeadings(): Plugin {
   return (node: Node, file: VFileWithOutput<any>) => {
     file.data.headings = headings(node);
   };
