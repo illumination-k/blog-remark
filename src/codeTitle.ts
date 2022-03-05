@@ -1,12 +1,13 @@
 import { Parent, visit } from "unist-util-visit";
-import { CodeNode } from "./interfaces";
+import { Code } from "mdast";
+import { Plugin } from "unified";
 
-export default function codeTitle() {
+export default function codeTitle(): Plugin {
   return transformer;
 
   function transformer(ast: Parent) {
     const prefix = ":title=";
-    visit(ast, "code", (node: CodeNode, index: number) => {
+    visit(ast, "code", (node: Code, index: number) => {
       const lang = node.lang || "";
 
       const separatorIndex = lang.lastIndexOf(prefix);

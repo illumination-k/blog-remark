@@ -11,7 +11,7 @@ function createNewNode(
     {
       type: "mdxJsxAttribute",
       name: "data-formula",
-      value: dataFormula,
+      value: `\\[${dataFormula}\\]`,
     },
     {
       type: "mdxJsxAttribute",
@@ -41,7 +41,7 @@ export default function toAmpMathml() {
       parent.children[index] = newNode;
     });
 
-    visit(ast, "inline-math", (node: Node, index: number, parent: Parent) => {
+    visit(ast, "inlineMath", (node: Node, index: number, parent: Parent) => {
       const newNode = createNewNode("mdxJsxTextElement", toString(node));
       parent.children[index] = newNode;
     });

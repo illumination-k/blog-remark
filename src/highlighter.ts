@@ -1,6 +1,8 @@
 import { Node, visit } from "unist-util-visit";
 import { refractor } from "refractor/lib/core.js";
-import { CodeNode } from "./interfaces";
+import { Code } from "mdast";
+
+import { Plugin } from "unified";
 
 import js from "refractor/lang/javascript.js";
 refractor.register(js);
@@ -92,19 +94,22 @@ refractor.register(graphql);
 import toml from "refractor/lang/toml.js";
 refractor.register(toml);
 
-export default function highlighter() {
+export default function highlighter(): Plugin {
   return (ast: Node) => {
-    visit(ast, "code", (node: CodeNode) => {
+    visit(ast, "code", (node: Code) => {
       const [lang] = (node.lang || "").split(":");
       if (lang) {
         node.lang = lang;
         if (!refractor.registered(lang)) {
           return;
         }
-        if (node.data == null) {
+
+        if (!node.data) {
           node.data = {};
         }
-        node.data.hChildren = refractor.highlight(node.value, lang);
+
+        const highlightNode = refractor.highlight(node.value, lang);
+        node.data.hChildren = highlightNode.children;
       }
     });
   };
