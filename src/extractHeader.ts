@@ -9,10 +9,13 @@ type Heading = {
   value: string;
 };
 
-export function headings(ast: Node) {
+export function headings(ast: Node, depth: number) {
   const headingsList: Heading[] = [];
 
   visit(ast, "heading", (node: AstHeading) => {
+    if (node.depth > depth) {
+      return;
+    }
     headingsList.push({
       depth: node.depth,
       value: toString(node, { includeImageAlt: false }),
@@ -22,8 +25,12 @@ export function headings(ast: Node) {
   return headingsList;
 }
 
-export default function extractHeadings(): Plugin {
+type Option = {
+  depth: number;
+};
+
+export default function extractHeadings(option: Option = { depth: 3 }): Plugin {
   return (node: Node, file: VFileWithOutput<any>) => {
-    file.data.headings = headings(node);
+    file.data.headings = headings(node, option.depth);
   };
 }
