@@ -1,13 +1,17 @@
 import { Node } from "unist";
 import { Parent, visit } from "unist-util-visit";
 import { toString } from "mdast-util-to-string";
-import { MdxJsxAttribute } from "mdast-util-mdx-jsx";
+import {
+  MdxJsxAttribute,
+  MdxJsxFlowElement,
+  MdxJsxTextElement,
+} from "mdast-util-mdx-jsx";
 import { Plugin } from "unified";
 
 function createNewNode(
   type: "mdxJsxTextElement" | "mdxJsxFlowElement",
   dataFormula: string
-) {
+): MdxJsxFlowElement | MdxJsxTextElement {
   let attributes: MdxJsxAttribute[] = [
     {
       type: "mdxJsxAttribute",
@@ -32,6 +36,7 @@ function createNewNode(
     type: type,
     name: "amp-mathml",
     attributes,
+    children: [],
   };
 }
 
