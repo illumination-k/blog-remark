@@ -8,6 +8,10 @@ export function wrapGrid(
   const attributes: MdxJsxAttribute[] = [
     {
       type: "mdxJsxAttribute",
+      name: "item",
+    },
+    {
+      type: "mdxJsxAttribute",
       name: grid,
       value: size.toString(),
     },
