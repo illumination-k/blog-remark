@@ -3,7 +3,7 @@ import { Image } from "mdast";
 import sizeOf from "image-size";
 import sr from "sync-request";
 import createAmpImageNode from "./createAmpImageNode.js";
-import { MdxJsxAttribute } from "mdast-util-mdx-jsx";
+import { MdxJsxAttribute, MdxJsxFlowElement } from "mdast-util-mdx-jsx";
 import { Plugin } from "unified";
 
 function createGithubRepoImageNode(
@@ -12,16 +12,16 @@ function createGithubRepoImageNode(
   alt: string,
   width: number,
   height: number
-) {
+): MdxJsxFlowElement {
   const ampImage = createAmpImageNode(gh_card_url, alt, width, height, "fixed");
   const attributes: MdxJsxAttribute[] = [
     { type: "mdxJsxAttribute", name: "href", value: repo_url },
   ];
   return {
-    type: "mdxJsxTextElement",
+    type: "mdxJsxFlowElement",
     name: "a",
     attributes,
-    children: ampImage,
+    children: [ampImage],
   };
 }
 

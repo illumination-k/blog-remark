@@ -1,4 +1,4 @@
-import { MdxJsxAttribute } from "mdast-util-mdx-jsx";
+import { MdxJsxAttribute, MdxJsxFlowElement } from "mdast-util-mdx-jsx";
 
 export default function createAmpImageNode(
   src: string,
@@ -6,7 +6,7 @@ export default function createAmpImageNode(
   width: number,
   height: number,
   layout: string = "responsive"
-) {
+): MdxJsxFlowElement {
   const attributes: MdxJsxAttribute[] = [
     {
       type: "mdxJsxAttribute",
@@ -39,5 +39,6 @@ export default function createAmpImageNode(
     type: "mdxJsxFlowElement",
     name: "amp-img",
     attributes,
+    children: [],
   };
 }
