@@ -1,5 +1,4 @@
 import { Heading as AstHeading, Text } from "mdast";
-import { Node } from "unist";
 import { toString } from "mdast-util-to-string";
 import { visit, Parent } from "unist-util-visit";
 import { Plugin } from "unified";

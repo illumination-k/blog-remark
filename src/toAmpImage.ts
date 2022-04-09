@@ -4,7 +4,6 @@ import sizeOf from "image-size";
 import sr from "sync-request";
 import createAmpImageNodeWithMeta from "./createAmpImageNode.js";
 import { Plugin } from "unified";
-import { wrapGrid } from "./warpGrid.js";
 
 type Option = {
   defaultWidth: number;
