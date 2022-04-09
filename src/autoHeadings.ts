@@ -40,7 +40,7 @@ export default function (option: Option = { depth: 3 }): Plugin {
 
   return (ast: Parent) => {
     visit(ast, "heading", (node: AstHeading, index: number, parent: Parent) => {
-      if (option.depth > node.depth) {
+      if (option.depth < node.depth) {
         return;
       }
       const newNode = createHeadingWithId(node, id);

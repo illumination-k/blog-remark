@@ -1,5 +1,5 @@
 import { MdxJsxAttribute, MdxJsxFlowElement } from "mdast-util-mdx-jsx";
-import { wrapGrid } from "./warpGrid";
+import { wrapGrid } from "./warpGrid.js";
 
 export default function createAmpImageNodeWithMeta(
   src: string,
