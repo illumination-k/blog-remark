@@ -2,11 +2,11 @@ import { Parent, visit } from "unist-util-visit";
 import { Image } from "mdast";
 import sizeOf from "image-size";
 import sr from "sync-request";
-import createAmpImageNode from "./createAmpImageNode.js";
+import { createAmpImageNode } from "./createAmpImageNode.js";
 import { MdxJsxAttribute, MdxJsxFlowElement } from "mdast-util-mdx-jsx";
 import { Plugin } from "unified";
 
-function createGithubRepoImageNode(
+export function createGithubRepoImageNode(
   repo_url: string,
   gh_card_url: string,
   alt: string,

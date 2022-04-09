@@ -2,7 +2,7 @@ import { Parent, visit } from "unist-util-visit";
 import { Image } from "mdast";
 import sizeOf from "image-size";
 import sr from "sync-request";
-import createAmpImageNode from "./createAmpImageNode.js";
+import createAmpImageNodeWithMeta from "./createAmpImageNode.js";
 import { Plugin } from "unified";
 import { wrapGrid } from "./warpGrid.js";
 
@@ -21,7 +21,8 @@ type ParseAltResult = {
     | undefined;
   alt: string;
 };
-function parseAlt(alt_str: string): ParseAltResult {
+
+export function parseAlt(alt_str: string): ParseAltResult {
   const alt_arr = alt_str.split(":");
   if (alt_arr.length === 1) {
     return {
@@ -76,20 +77,13 @@ export default function toAmpImage(
       const buf = Buffer.from(sr("GET", url).getBody());
       const dimensions = sizeOf(buf);
 
-      const ampImgNode = createAmpImageNode(
+      const newNode = createAmpImageNodeWithMeta(
         url,
         alt,
         dimensions.width || option.defaultWidth,
-        dimensions.height || option.defaultHeight
+        dimensions.height || option.defaultHeight,
+        meta
       );
-
-      let newNode;
-      if (meta) {
-        const { grid, size } = meta;
-        newNode = wrapGrid(grid, size, [ampImgNode]);
-      } else {
-        newNode = ampImgNode;
-      }
 
       parent.children[index] = newNode;
     });

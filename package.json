@@ -1,6 +1,6 @@
 {
   "name": "blog-remark",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "./build/index.js",
   "types": "./build/index.d.js",
   "license": "MIT",
@@ -37,7 +37,8 @@
     "unified": "^10.1.1",
     "unist-builder": "^3.0.0",
     "unist-util-inspect": "^7.0.0",
-    "xdm": "^3.3.4"
+    "xdm": "^3.3.4",
+    "@mdx-js/mdx": "2.1.1"
   },
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest",
