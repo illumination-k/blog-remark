@@ -1,6 +1,7 @@
 import { Parent, visit } from "unist-util-visit";
 import { Code } from "mdast";
 import { Plugin } from "unified";
+import { MdxJsxTextElement } from "mdast-util-mdx-jsx";
 
 export default function codeTitle(): Plugin {
   return transformer;
@@ -19,11 +20,24 @@ export default function codeTitle(): Plugin {
 
         const titleNodeclassName = "code-title";
 
-        const titleNode = {
-          type: "html",
-          value: `
-              <div class="${titleNodeclassName}"><span>${title}</span></div>
-            `.trim(),
+        const titleNode: MdxJsxTextElement = {
+          type: "mdxJsxTextElement",
+          name: "div",
+          attributes: [
+            {
+              type: "mdxJsxAttribute",
+              name: "className",
+              value: titleNodeclassName,
+            },
+          ],
+          children: [
+            {
+              type: "mdxJsxTextElement",
+              name: "span",
+              attributes: [],
+              children: [{ type: "text", value: title }],
+            },
+          ],
         };
 
         ast.children.splice(index, 0, titleNode);
